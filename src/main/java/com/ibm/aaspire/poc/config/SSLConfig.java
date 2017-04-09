@@ -42,31 +42,11 @@ public class SSLConfig extends AbstractCloudConfig {
 		Map<String, ?> creds = (Map<String, ?>)compose.get("credentials");
 		String mongoUri = creds.get("uri").toString(); 
 		String sslCertBase64 = creds.get("ca_certificate_base64").toString();
-		
-		System.err.println("\n\n\n\n===========================");
-		System.err.println(sslCertBase64);
-		System.err.println("\n\n\n\n===========================");
     	
         boolean sslEnabled = mongoUri.contains("ssl=true");
         MongoClientOptions.Builder optionsBuilder = MongoClientOptions.builder();
         if (sslEnabled) {
-            optionsBuilder.sslEnabled(true).sslInvalidHostNameAllowed(true);
-            byte[] caCertBytes = Base64.getDecoder().decode(sslCertBase64);
-            CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
-            Certificate caCert = certificateFactory.generateCertificate(new ByteArrayInputStream(caCertBytes));
- 
-            KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
-            trustStore.load(null, null);
-            trustStore.setCertificateEntry("bluemix_mongo", caCert);
- 
-            TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-            tmf.init(trustStore);
- 
-            SSLContext sslContext = SSLContext.getInstance("TLS");
-            sslContext.init(null, tmf.getTrustManagers(), null);
- 
-            SSLSocketFactory socketFactory = sslContext.getSocketFactory();
-            optionsBuilder.socketFactory(socketFactory);
+        	optionsBuilder.sslEnabled(true).sslInvalidHostNameAllowed(true);
         }
         return optionsBuilder.build();
     }
