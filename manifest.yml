@@ -1,0 +1,9 @@
+applications:
+- disk_quota: 1024M
+  host: member-mgmt-services
+  name: member-mgmt-services
+  path: ./aaspire-membermgmt-service-0.0.1-SNAPSHOT.war
+  instances: 1
+  memory: 512M
+  buildpack: liberty-for-java
+  domain: mybluemix.net
