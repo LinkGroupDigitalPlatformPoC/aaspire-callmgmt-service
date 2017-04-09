@@ -6,8 +6,6 @@ import java.util.Base64;
 import java.io.ByteArrayInputStream;
 import java.security.KeyStore;
 import java.security.cert.Certificate;
-import java.security.cert.CertificateFactory;
-import java.util.Base64;
  
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
@@ -33,8 +31,8 @@ public class CloudConfig extends AbstractCloudConfig {
 	private String sslCertBase64;
 
 	@Autowired
-	public CloudConfig(@Value("${vcap.services.mongodb-devicestate.credentials.uri}") String mongoUri,
-			@Value("${vcap.services.mongodb-devicestate.credentials.ca_certificate_base64}") String sslCertBase64) {
+	public CloudConfig(@Value("${vcap.services.compose-for-mongodb.credentials.uri}") String mongoUri,
+			@Value("${vcap.services.compose-for-mongodb.credentials.ca_certificate_base64}") String sslCertBase64) {
 		this.mongoUri = mongoUri;
 		this.sslCertBase64 = sslCertBase64;
 	}
@@ -65,7 +63,6 @@ public class CloudConfig extends AbstractCloudConfig {
         }
         return optionsBuilder.build();
     }
-	
 	
 	@Bean
 	public MongoDbFactory documentMongoDbFactory() {
