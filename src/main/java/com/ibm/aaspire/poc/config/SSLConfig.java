@@ -42,6 +42,10 @@ public class SSLConfig extends AbstractCloudConfig {
 		Map<String, ?> creds = (Map<String, ?>)compose.get("credentials");
 		String mongoUri = creds.get("uri").toString(); 
 		String sslCertBase64 = creds.get("ca_certificate_base64").toString();
+		
+		System.err.println("\n\n\n\n===========================");
+		System.err.println(sslCertBase64);
+		System.err.println("\n\n\n\n===========================");
     	
         boolean sslEnabled = mongoUri.contains("ssl=true");
         MongoClientOptions.Builder optionsBuilder = MongoClientOptions.builder();
