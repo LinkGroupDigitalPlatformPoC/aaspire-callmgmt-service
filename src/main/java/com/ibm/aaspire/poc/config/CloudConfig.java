@@ -2,7 +2,8 @@ package com.ibm.aaspire.poc.config;
 
 import java.security.cert.CertificateFactory;
 import java.util.Base64;
-
+import java.util.List;
+import java.util.Map;
 import java.io.ByteArrayInputStream;
 import java.security.KeyStore;
 import java.security.cert.Certificate;
@@ -13,6 +14,8 @@ import javax.net.ssl.TrustManagerFactory;
  
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.json.JsonParser;
+import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.cloud.config.java.AbstractCloudConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,20 +29,20 @@ import org.springframework.data.mongodb.MongoDbFactory;
 @Profile({ "dev", "test", "prod" })
 public class CloudConfig extends AbstractCloudConfig {
 
-	private String mongoUri;
-
-	private String sslCertBase64;
-
-	@Autowired
-	public CloudConfig(@Value("${vcap.services.compose-for-mongodb.credentials.uri}") String mongoUri,
-			@Value("${vcap.services.compose-for-mongodb.credentials.ca_certificate_base64}") String sslCertBase64) {
-		this.mongoUri = mongoUri;
-		this.sslCertBase64 = sslCertBase64;
-	}
-
 	// Taken from http://codegists.com/snippet/java/cloudconfigurationjava_joelmarty_java
     @Bean
+    @SuppressWarnings("unchecked")
     public MongoClientOptions mongoClientOptions() throws Exception {
+		String vcap = System.getenv("VCAP_SERVICES");
+
+		JsonParser parser = JsonParserFactory.getJsonParser();
+		Map<String, Object> jsonMap = parser.parseMap(vcap);
+		List<?> mongoAddr = (List<?>)jsonMap.get("compose-for-mongodb");
+		Map<String, ?> compose = (Map<String, Object>)mongoAddr.get(0);
+		Map<String, ?> creds = (Map<String, ?>)compose.get("credentials");
+		String mongoUri = creds.get("uri").toString(); 
+		String sslCertBase64 = creds.get("ca_certificate_base64").toString();
+    	
         boolean sslEnabled = mongoUri.contains("ssl=true");
         MongoClientOptions.Builder optionsBuilder = MongoClientOptions.builder();
         if (sslEnabled) {
