@@ -1,6 +1,7 @@
 // Then we'll pull in the database client library
 let MongoClient = require("mongodb").MongoClient;
 const invariant = require('invariant');
+const util = require('util')
 
 function connect(cfenv, callback) {
 

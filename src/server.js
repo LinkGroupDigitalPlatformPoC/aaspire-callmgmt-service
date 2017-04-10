@@ -11,6 +11,9 @@ let helmet = require('helmet');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 
+// Util is handy to have around, so thats why that's here.
+const util = require('util')
+
 // Some middleware
 //app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
@@ -19,9 +22,6 @@ app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-// Util is handy to have around, so thats why that's here.
-const util = require('util')
 
 // We want to extract the port to publish our app on
 let port = process.env.PORT || 8081;
