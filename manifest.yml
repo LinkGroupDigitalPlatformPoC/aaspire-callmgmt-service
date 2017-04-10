@@ -1,9 +1,4 @@
 applications:
-- disk_quota: 1024M
-  host: call-mgmt-services
-  name: call-mgmt-services
-  path: ./aaspire-callmgmt-service-0.0.1-SNAPSHOT.war
-  instances: 1
-  memory: 512M
-  buildpack: liberty-for-java
-  domain: mybluemix.net
+- name: node-hello-world
+  memory: 128M
+  buildpack: sdk-for-nodejs

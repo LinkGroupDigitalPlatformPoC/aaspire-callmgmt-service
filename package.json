@@ -1,0 +1,31 @@
+{
+  "name": "dev-call-mgmt-service",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "debug": "nodemon --exec babel-node --debug-brk --inspect server.js",
+    "start-dev": "nodemon --exec babel-node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cf-deployment-tracker-client": "*",
+    "cfenv": "1.0.x",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "helmet": "^3.5.0",
+    "http-post": "^0.1.1",
+    "http-proxy": "^1.8.1",
+    "mongodb": "^2.2.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "repository": {},
+  "engines": {
+    "node": "7.0.0"
+  }
+}
