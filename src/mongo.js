@@ -1,5 +1,6 @@
 // Then we'll pull in the database client library
 let MongoClient = require("mongodb").MongoClient;
+const assert = require('assert');
 
 function connect(cfenv, callback) {
 

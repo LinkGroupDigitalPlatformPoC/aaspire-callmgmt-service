@@ -8,6 +8,7 @@
     "start-dev": "nodemon src/server.js"
   },
   "dependencies": {
+    "assert": "^1.4.1",
     "body-parser": "^1.17.1",
     "cf-deployment-tracker-client": "*",
     "cfenv": "1.0.x",
