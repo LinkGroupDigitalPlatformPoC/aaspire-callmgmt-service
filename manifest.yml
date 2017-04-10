@@ -1,4 +1,6 @@
 applications:
 - name: aaspire-call-mgmt
-  memory: 128M
+  memory: 256M
   buildpack: sdk-for-nodejs
+  services:
+  - callservices-mongo
