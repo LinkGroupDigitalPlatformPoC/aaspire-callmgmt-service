@@ -1,6 +1,6 @@
 // Then we'll pull in the database client library
 let MongoClient = require("mongodb").MongoClient;
-const assert = require('assert');
+const invariant = require('invariant');
 
 function connect(cfenv, callback) {
 
@@ -13,7 +13,7 @@ function connect(cfenv, callback) {
     let mongodb_services = services["compose-for-mongodb"];
     
     // This check ensures there is a services for MongoDB databases
-    //assert(!util.isUndefined(mongodb_services), "Must be bound to compose-for-mongodb services");
+    invariant(!util.isNullOrUndefined(mongodb_services), "Must be bound to compose-for-mongodb services");
 
     // We now take the first bound MongoDB service and extract it's credentials object
     let credentials = mongodb_services[0].credentials;

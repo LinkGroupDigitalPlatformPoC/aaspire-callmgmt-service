@@ -8,7 +8,6 @@
     "start-dev": "nodemon src/server.js"
   },
   "dependencies": {
-    "assert": "^1.4.1",
     "body-parser": "^1.17.1",
     "cf-deployment-tracker-client": "*",
     "cfenv": "1.0.x",
@@ -20,6 +19,7 @@
     "helmet": "^3.5.0",
     "http-post": "^0.1.1",
     "http-proxy": "^1.8.1",
+    "invariant": "^2.2.2",
     "mongo-mock": "^2.4.0",
     "mongodb": "^2.2.9"
   },

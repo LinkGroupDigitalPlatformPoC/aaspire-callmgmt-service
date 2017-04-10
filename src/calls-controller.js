@@ -1,5 +1,5 @@
 const util = require('util')
-const assert = require('assert');
+const invariant = require('invariant');
 const ObjectId = require('mongodb').ObjectId;
 
 class CallsController {
@@ -20,7 +20,7 @@ class CallsController {
     }
 
     createCall(request, response) {
-        //assert(!util.isUndefined(request.body.memberId), "Must have memberId");
+        invariant(!util.isNullOrUndefined(request.body.memberId), "Must have memberId");
 
         const newCall = { memberId: request.body.memberId };
         this.mongodb.collection("calls").insertOne(newCall, function(error, result) {
@@ -33,7 +33,6 @@ class CallsController {
     }
 
     getById(request, response) {
-        // and we call on the connection to return us all the documents in the calls collection.
         let oId = new ObjectId(request.params.id);
         this.mongodb.collection("calls").findOne({_id: oId}, function(err, call) {
             if (err) {
@@ -47,7 +46,6 @@ class CallsController {
     }
 
     getByMember(request, response) {
-        // and we call on the connection to return us all the documents in the calls collection.
         this.mongodb.collection("calls").find({memberId: request.params.memberId}).toArray(function(err, calls) {
             if (err) {
                 response.status(500).send(err);
