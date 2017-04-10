@@ -20,7 +20,7 @@ class CallsController {
     }
 
     createCall(request, response) {
-        assert(!util.isUndefined(request.body.memberId), "Must have memberId");
+        //assert(!util.isUndefined(request.body.memberId), "Must have memberId");
 
         const newCall = { memberId: request.body.memberId };
         this.mongodb.collection("calls").insertOne(newCall, function(error, result) {
