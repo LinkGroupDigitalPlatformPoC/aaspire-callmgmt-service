@@ -30,25 +30,20 @@ let port = process.env.PORT || 8081;
 
 // Now lets get cfenv and ask it to parse the environment variable
 let cfenv = require('cfenv');
-
-// This is a global variable we'll use for handing the MongoDB client around
-//let mongodb;
-
 let connect =  cfenv.getAppEnv().isLocal ? require('./mongo-local') : require('./mongo');
-connect(cfenv, (db) => { 
-  
-  let mongodb = db 
 
+connect(cfenv, (db) => { 
   let CallsController = require('./calls-controller');
-  let controller = new CallsController(mongodb);
+  let controller = new CallsController(db);
 
   // Then we create a route to handle our example database call
   app.get("/calls", controller.getAll.bind(controller));
   app.post("/calls", controller.createCall.bind(controller));
+  app.get("/calls/:id", controller.getById.bind(controller));
+  app.get("/members/:memberId/calls", controller.getByMember.bind(controller));
 
   // Now we go and listen for a connection.
   app.listen(port);
-
 });
 
 //??
