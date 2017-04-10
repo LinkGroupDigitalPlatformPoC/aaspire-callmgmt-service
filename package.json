@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node server.js",
-    "debug": "nodemon --exec babel-node --debug-brk --inspect server.js",
-    "start-dev": "nodemon --exec babel-node server.js"
+    "start": "node src/server.js",
+    "debug": "nodemon --debug-brk --inspect src/server.js",
+    "start-dev": "nodemon src/server.js"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
@@ -19,6 +19,7 @@
     "helmet": "^3.5.0",
     "http-post": "^0.1.1",
     "http-proxy": "^1.8.1",
+    "mongo-mock": "^2.4.0",
     "mongodb": "^2.2.9"
   },
   "devDependencies": {
