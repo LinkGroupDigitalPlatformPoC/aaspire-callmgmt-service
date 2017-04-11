@@ -39,6 +39,12 @@ connect(cfenv, (db) => {
   app.post("/calls", controller.createCall.bind(controller));
   app.get("/calls/:id", controller.getById.bind(controller));
   app.get("/members/:memberId/calls", controller.getByMember.bind(controller));
+  
+  
+  //These are used for testing purposes only. An easy way to load the test data
+  let LoadDataController = require('./loaddata-controller');
+  let loadDataController = new LoadDataController(db);
+  app.get("/loaddata", loadDataController.loadTestData.bind(loadDataController));
 
   // Now we go and listen for a connection.
   app.listen(port);
