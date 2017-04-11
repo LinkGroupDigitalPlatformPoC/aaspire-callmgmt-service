@@ -44,7 +44,7 @@ connect(cfenv, (db) => {
   //These are used for testing purposes only. An easy way to load the test data
   let LoadDataController = require('./loaddata-controller');
   let loadDataController = new LoadDataController(db);
-  app.get("/loaddata", loadDataController.loadTestData.bind(loadDataController));
+  app.post("/loaddata", loadDataController.loadTestData.bind(loadDataController));
 
   // Now we go and listen for a connection.
   app.listen(port);

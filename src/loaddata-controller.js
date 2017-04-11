@@ -8,8 +8,6 @@ class LoadDataController {
         this.mongodb = mongodb;
     }
 
-
-
     // This is a test method which is responsible for loading test data
     loadTestData(request, response) {
     	
@@ -17,18 +15,13 @@ class LoadDataController {
     	
     	const callsArray = callsData.calls;
     
-    		  
-    		  this.mongodb.collection("calls").insert(callsArray, function(error, result) {
-    			  if (error) {
-    	                response.status(500).send(error);
-    	            } else {
-    	                response.send(result);
-    	            }
-    	        });
-    		  
-    	
-  
-  
+    	this.mongodb.collection("calls").insert(callsArray, function(error, result) {
+		  if (error) {
+                response.status(500).send(error);
+            } else {
+                response.send(result);
+            }
+        });
 
     }
 
