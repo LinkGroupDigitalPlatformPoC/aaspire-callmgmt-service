@@ -1,0 +1,64 @@
+{
+   "calls":[
+      {
+         "memberId":"z123",
+         "dateTimeInitiated":"2017-03-31 09:30",
+         "dateTimeCompleted":"2017-03-31 09:35",
+         "notes":"detailed notes sample",
+         "primaryTopic":"Account Inquiry",
+         "secondaryTopic":[
+            "Placeholder1",
+            "Placeholder2"
+         ],
+         "status":"completed"
+      },
+      {
+         "memberId":"z123",
+         "dateTimeInitiated":"2017-03-30 19:30",
+         "dateTimeCompleted":"2017-03-30 19:35",
+         "notes":"detailed notes sample",
+         "primaryTopic":"Address Change",
+         "secondaryTopic":[
+            "Placeholder1",
+            "Placeholder2"
+         ],
+         "status":"completed"
+      },
+      {
+         "memberId":"x123",
+         "dateTimeInitiated":"2017-03-31 09:30",
+         "dateTimeCompleted":"2017-03-31 09:35",
+         "notes":"detailed notes sample",
+         "primaryTopic":"Close Account",
+         "secondaryTopic":[
+            "Transfer Funds",
+            "Placeholder2"
+         ],
+         "status":"started"
+      },
+      {
+         "memberId":"x123",
+         "dateTimeInitiated":"2017-03-31 09:30",
+         "dateTimeCompleted":"2017-03-31 09:35",
+         "notes":"detailed notes sample",
+         "primaryTopic":"Account Inquiry",
+         "secondaryTopic":[
+            "Placeholder1",
+            "Placeholder2"
+         ],
+         "status":"completed"
+      },
+      {
+         "memberId":"z123",
+         "dateTimeInitiated":"2017-03-31 07:30",
+         "dateTimeCompleted":"2017-03-31 08:35",
+         "notes":"detailed notes sample",
+         "primaryTopic":"Account Inquiry",
+         "secondaryTopic":[
+            "Placeholder1",
+            "Placeholder2"
+         ],
+         "status":"completed"
+      }
+   ]
+}
