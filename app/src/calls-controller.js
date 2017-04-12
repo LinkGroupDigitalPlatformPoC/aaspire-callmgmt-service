@@ -28,7 +28,9 @@ class CallsController {
             if (error) {
                 response.status(500).send(error);
             } else {
-                response.send(result);
+            	
+            	var callInfo = common.filterEmptyProps(result.ops[0]);
+                response.send(callInfo);
             }
         });
     }
