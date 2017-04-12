@@ -37,6 +37,7 @@ connect(cfenv, (db) => {
   // Then we create a route to handle our example database call
   app.get("/calls", controller.getAll.bind(controller));
   app.post("/calls", controller.createCall.bind(controller));
+  app.put("/calls/:id", controller.updateCall.bind(controller));
   app.get("/calls/:id", controller.getById.bind(controller));
   app.get("/members/:memberId/calls", controller.getByMember.bind(controller));
   

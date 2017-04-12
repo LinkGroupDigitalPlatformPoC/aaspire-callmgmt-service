@@ -1,7 +1,7 @@
-const util = require('util');
 const invariant = require('invariant');
 const ObjectId = require('mongodb').ObjectId;
 const Call = require('./call');
+const common = require('./common');
 
 class CallsController {
 
@@ -16,11 +16,10 @@ class CallsController {
             if (err) {
                 response.status(500).send(err);
             } else {
-                response.send(calls);
+                response.send(calls.map(common.filterEmptyProps));
             }
         });
     }
-
     
     createCall(request, response) {
       
@@ -33,6 +32,26 @@ class CallsController {
             }
         });
     }
+    
+    updateCall(request, response) {
+        const updatedCall = new Call(request.body); 
+        var oId = new ObjectId(request.params.id);
+        
+        console.log("ID to change is:" + oId);
+        
+        //this.mongodb.collection("calls").findAndModify( { _id: oId} , [[ '_id', 'asc']], { $set: updatedCall } , { },  function(error, result) {
+        //this.mongodb.collection("calls").updateOne( { _id: oId} , updatedCall, function(error, result) { //does not work - comes up as unimplemented
+        
+        var that = this; //this and that are giving us some laugh...
+        
+        this.mongodb.collection("calls").update( { _id: oId} , { $set: new Call(request.body) }, function(error, result) { //Works 
+            if (error) {
+                response.status(500).send(error);
+            } else {
+            	that.getById(request,response);
+            }
+        });
+    }
 
     getById(request, response) {
         let oId = new ObjectId(request.params.id);
@@ -42,7 +61,7 @@ class CallsController {
             } else if (call === null) {
                 response.status(404).send(`No call with id ${request.params.id}`);
             } else {
-                response.send(call);
+                response.send(common.filterEmptyProps(call));
             }
         });
     }
