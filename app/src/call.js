@@ -13,15 +13,14 @@ class Call {
 		invariant(!util.isNullOrUndefined(body.dateTimeInitiated), "Must have Date Time Initiated");
 		invariant(!util.isNullOrUndefined(body.status), "Must have status");
 	        
-    	this.memberId = body.memberId;
-    	this.csrId  = body.csrId;
-    	this.dateTimeInitiated = body.dateTimeInitiated;
-    	this.dateTimeCompleted = body.dateTimeCompleted ;
-    	this.notes = body.notes;
-    	this.primaryTopic = body.primaryTopic;
-    	this.secondaryTopic = body.secondaryTopic ;
-    	this.status = body.status ;
-		
+    	this.memberId = body.memberId || null;
+    	this.csrId  = body.csrId || null;
+    	this.dateTimeInitiated = body.dateTimeInitiated || null;
+    	this.dateTimeCompleted = body.dateTimeCompleted || null ;
+    	this.notes = body.notes || null;
+    	this.primaryTopic = body.primaryTopic || null;
+    	this.secondaryTopic = body.secondaryTopic  || null;
+    	this.status = body.status || null;	
 	}
 }
 
