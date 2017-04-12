@@ -22,6 +22,7 @@
     "http-post": "^0.1.1",
     "http-proxy": "^1.8.1",
     "invariant": "^2.2.2",
+    "lodash": "^4.17.4",
     "mongo-mock": "^2.4.0",
     "mongodb": "^2.2.9"
   },
