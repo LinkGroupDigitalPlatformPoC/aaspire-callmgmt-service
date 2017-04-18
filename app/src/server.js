@@ -51,6 +51,7 @@ connect(cfenv, dbWorkers, (db) => {
   app.post("/calls", controller.createCall.bind(controller));
   app.put("/calls/:id", controller.updateCall.bind(controller));
   app.get("/calls/:id", controller.getById.bind(controller));
+  app.get("/members/:memberId/analysis", controller.getMemberAnalysis.bind(controller));
   app.get("/members/:memberId/calls", controller.getByMember.bind(controller));
   
   //These are used for testing purposes only. An easy way to load the test data

@@ -2,6 +2,7 @@ const ObjectId = require('mongodb').ObjectId;
 const Call = require('../model/call');
 const BaseCallsController = require('./base-calls-controller')
 const common = require('../common');
+const _ = require('lodash');
 
 class CallsController extends BaseCallsController {
 
@@ -47,6 +48,44 @@ class CallsController extends BaseCallsController {
         this.mongodb.collection("calls").find({memberId: request.params.memberId}).toArray((err, payload) => {
             this.loadCalls(err, payload, response, request.method)
         });
+    }
+
+    getMemberAnalysis(request, response) {
+        var that = this;
+        this.mongodb.collection("calls").find({memberId: request.params.memberId}).toArray((err, payload) => {
+            if(err) {
+                response.status(500).send(err);
+            } else {
+                const promiseToEnrichAll = Promise.all(payload.map(call => that.enrichCall(call, request.method)));
+                this.writeAnalysisResponse(response, promiseToEnrichAll);
+            }
+        });
+    }
+
+    writeAnalysisResponse(response, promiseToEnrichAll) {
+        promiseToEnrichAll.then(calls => {
+            const analyses = _.compact(calls.map(c => c.analysis));
+            response.send(this.averageAnalyses(analyses));
+        }).catch(e => response.status(500).send(err));
+    }
+
+    averageAnalyses(analyses) {
+        if(analyses.length === 0) {
+            return { };
+        } else {
+            return {
+                    sentiment: {
+                        score: common.average(analyses.map(a => a.sentiment.score))
+                    },
+                    emotion: {
+                        sadness: common.average(analyses.map(a => a.emotion.sadness)),
+                        joy: common.average(analyses.map(a => a.emotion.joy)),
+                        fear: common.average(analyses.map(a => a.emotion.fear)),
+                        disgust: common.average(analyses.map(a => a.emotion.disgust)),
+                        anger: common.average(analyses.map(a => a.emotion.anger))
+                    }
+                }
+        }
     }
 }
 
