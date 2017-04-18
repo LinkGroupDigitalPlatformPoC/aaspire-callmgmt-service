@@ -24,7 +24,8 @@
     "invariant": "^2.2.2",
     "lodash": "^4.17.4",
     "mongo-mock": "^2.4.0",
-    "mongodb": "^2.2.9"
+    "mongodb": "^2.2.9",
+    "watson-developer-cloud": "^2.28.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",

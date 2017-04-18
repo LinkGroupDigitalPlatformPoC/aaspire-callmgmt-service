@@ -3,7 +3,7 @@ let MongoClient = require("mongodb").MongoClient;
 const invariant = require('invariant');
 const util = require('util')
 
-function connect(cfenv, callback) {
+function connect(cfenv, dbWorkers, callback) {
 
     let appenv = cfenv.getAppEnv();
 
@@ -34,8 +34,8 @@ function connect(cfenv, callback) {
                 ssl: true,
                 sslValidate: true,
                 sslCA: ca,
-                poolSize: 1,
-                reconnectTries: 1
+                poolSize: dbWorkers,
+                reconnectTries: 3
             }
         },
         function(err, db) {

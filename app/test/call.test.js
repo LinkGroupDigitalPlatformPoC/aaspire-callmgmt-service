@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var Call = require("../src/call");
+var Call = require("../src/model/call");
 const common = require('../src/common');
 
 describe("Testing the Call Class", function(){

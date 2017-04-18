@@ -6,7 +6,6 @@ const util = require('util');
 const invariant = require('invariant');
 
 class Call {
-
 	constructor(body) {
 		invariant(!util.isNullOrUndefined(body.memberId), "Must have memberId");
 		invariant(!util.isNullOrUndefined(body.csrId), "Must have csrId");
@@ -20,7 +19,10 @@ class Call {
     	this.notes = body.notes || null;
     	this.primaryTopic = body.primaryTopic || null;
     	this.secondaryTopic = body.secondaryTopic  || null;
-    	this.status = body.status || null;	
+    	this.status = body.status || null;
+		this.audioFile = body.audioFile || null;
+		this.transcript = null;	
+		this.analysis = null;
 	}
 }
 

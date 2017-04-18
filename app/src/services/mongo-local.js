@@ -1,7 +1,7 @@
 // Then we'll pull in the database client library
 let mongodb = require('mongo-mock');
 
-function connect(cfenv, callback) {
+function connect(cfenv, dbWorkers, callback) {
     // Connection URL
     let url = 'mongodb://localhost:27017/myproject';
     

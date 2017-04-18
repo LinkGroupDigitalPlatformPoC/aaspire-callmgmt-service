@@ -4,3 +4,5 @@ applications:
   buildpack: sdk-for-nodejs
   services:
   - callservices-mongo
+  - aaspire-nl-understanding
+  - aaspire-speech-to-text
