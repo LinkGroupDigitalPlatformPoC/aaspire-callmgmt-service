@@ -47,7 +47,7 @@ function parseResults(results) {
             } else if(timestamps[i][1] < labels[j].from) {
                 i++;
             }
-            if(i < timestamps.length && j < labels.length) {
+            if(i >= timestamps.length || j >= labels.length) {
                 break outer;
             }
         }
