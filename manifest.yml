@@ -1,5 +1,5 @@
 applications:
-- name: aaspire-call-mgmt
+- name: call-mgmt-services
   memory: 256M
   buildpack: sdk-for-nodejs
   services:
