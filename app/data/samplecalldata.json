@@ -6,7 +6,7 @@
          "dateTimeInitiated":"2017-03-31 09:30",
          "dateTimeCompleted":"2017-03-31 09:35",
          "notes":"The customer wanted to know their account balance. They were happy to get it so quickly.",
-         "audioFile":"file-1.wav",
+         "audioFile":"file-3.wav",
          "primaryTopic":"Account Inquiry",
          "secondaryTopic":[
             "Placeholder1",
@@ -19,7 +19,7 @@
          "csrId":"901",
          "dateTimeInitiated":"2017-03-30 19:30",
          "dateTimeCompleted":"2017-03-30 19:35",
-         "audioFile":"file-2.wav",
+         "audioFile":"file-3.wav",
          "notes":"The customer wanted to change their address. We quickly changed it in the system.",
          "primaryTopic":"Address Change",
          "secondaryTopic":[
