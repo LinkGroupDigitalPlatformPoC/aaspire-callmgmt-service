@@ -59,9 +59,8 @@ connect(cfenv, dbWorkers, (db) => {
   app.post("/loaddata", loadDataController.loadTestDataEndpoint.bind(loadDataController));
 
   // Load some data for local environment
-  if(cfenv.getAppEnv().isLocal) {
+  //TODO this might have to removed in PROD environment.
     loadDataController.loadTestData();
-  }
 
   // Now we go and listen for a connection.
   app.listen(port);
