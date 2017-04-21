@@ -9,8 +9,8 @@
          "audioFile":"file-3.wav",
          "primaryTopic":"Account Inquiry",
          "secondaryTopic":[
-            "Placeholder1",
-            "Placeholder2"
+            "Beneficiaries",
+            "Account details - confirmed"
          ],
          "status":"completed"
       },
@@ -23,8 +23,8 @@
          "notes":"The customer wanted to change their address. We quickly changed it in the system.",
          "primaryTopic":"Address Change",
          "secondaryTopic":[
-            "Placeholder1",
-            "Placeholder2"
+            "Beneficiaries",
+            "Account details - confirmed"
          ],
          "status":"completed"
       },
@@ -37,7 +37,7 @@
          "primaryTopic":"Close Account",
          "secondaryTopic":[
             "Transfer Funds",
-            "Placeholder2"
+            "Beneficiaries"
          ],
          "status":"started"
       },
@@ -49,8 +49,8 @@
          "notes":"The customer wanted to know their balance.",
          "primaryTopic":"Account Inquiry",
          "secondaryTopic":[
-            "Placeholder1",
-            "Placeholder2"
+            "Advisor",
+            "Beneficiaries"
          ],
          "status":"completed"
       },
@@ -62,9 +62,28 @@
          "notes":"The customer wanted to know their balance. He was frustrated because he couldn't find it online. He complained about the quality of the web site.",
          "primaryTopic":"Account Inquiry",
          "secondaryTopic":[
-            "Placeholder1",
-            "Placeholder2"
+            "Advisor",
+            "Beneficiaries"
          ],
+         "status":"completed"
+      },
+            {
+         "memberId":"202",
+         "csrId":"902",
+         "dateTimeInitiated":"2016-03-31 07:30",
+         "dateTimeCompleted":"2016-03-31 08:35",
+         "notes":"The customer queried about their balance. Customer wanted to hear about the fund performance. They requested for a physical copy of the fund performance for the last few years.  The customer has limited access to Internet. ",
+         "primaryTopic":"Account Inquiry",
+         "status":"completed"
+      },
+      
+        {
+         "memberId":"203",
+         "csrId":"904",
+         "dateTimeInitiated":"2016-03-23 07:30",
+         "dateTimeCompleted":"2016-03-23 08:35",
+         "notes":"The customer wanted to add a beneficiary to the account. Customer would e-mail the form across later in the day ",
+         "primaryTopic":"Beneficiaries",
          "status":"completed"
       },
       {
@@ -78,7 +97,40 @@
          "csrId":"905",
          "dateTimeInitiated":"2017-03-31 07:30",
          "status":"verifiedIdentity"
+      },
+        {
+         "memberId":"206",
+         "csrId":"901",
+         "dateTimeInitiated":"2016-06-27 07:30",
+         "dateTimeCompleted":"2016-06-27 07:45",
+         "notes":"The customer wanted to change their beneficiaries to the account.",
+         "primaryTopic":"Beneficiaries",
+         "status":"completed"
+      },
+            {
+         "memberId":"201",
+         "csrId":"904",
+         "dateTimeInitiated":"2017-04-13 09:30",
+         "dateTimeCompleted":"2017-04-33 10:35",
+         "notes":"This was a very long conversation with the customer. The customer was on hold for atleast 15 minutes before he could speak to one of us. He has not received a promised call back from the superfund. He wanted to change his invesment plans and is miffed with the fund provider. He has started speaking to other fund providers and seriously contemplating a move. ",
+         "primaryTopic":"Close Account",
+         "secondaryTopic":[
+            "Transfer Funds",
+            "Advisor"
+         ],
+         "status":"started"
+      },
+            {
+         "memberId":"201",
+         "csrId":"904",
+         "dateTimeInitiated":"2017-04-01 19:30",
+         "dateTimeCompleted":"2017-04-33 19:45",
+         "notes":"Customer requested to look for super that might have been lost as he has been with a few default super providers for his last few employers. Customer has provided the information and will be sending up the physical form shortly. ",
+         "primaryTopic":"ATO/Lost Super",
+
+         "status":"completed"
       }
+      
   ]
       
 }
