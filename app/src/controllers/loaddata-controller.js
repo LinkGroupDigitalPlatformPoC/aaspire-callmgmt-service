@@ -11,9 +11,23 @@ class LoadDataController  extends BaseCallsController {
 
     // This is a test method which is responsible for loading test data
     loadTestDataEndpoint(request, response) {
-    	this.mongodb.collection("calls").insert(callsData.calls, (err, payload) => {
-            this.loadCalls(err, payload, response, request.method, result => result.ops);
-        });
+    	
+    	//Let's clear the data before we insert the test data sample
+    	var that = this;
+    	this.mongodb.collection("calls").remove({},function(err,numberRemoved){
+    		
+    		if (!err){
+    			console.log("The number of documented removed is:" + numberRemoved);
+    			
+    			that.mongodb.collection("calls").insert(callsData.calls, (err, payload) => {
+    	            that.loadCalls(err, payload, response, request.method, result => result.ops);
+    	        });
+    			
+    		}
+             
+         });
+    	
+    	
     }
 
     loadTestData() {
