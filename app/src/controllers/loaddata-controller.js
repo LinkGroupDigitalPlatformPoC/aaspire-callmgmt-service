@@ -38,9 +38,8 @@ class LoadDataController  extends BaseCallsController {
             }
         }
 
-        this.mongodb.collection("calls").insert(callsData.calls, (err, payload) => {
-            this.loadCalls(err, payload, consoleResponse, "POST", result => result.ops);
-        });
+        
+        this.loadTestDataEndpoint({method: 'POST'}, consoleResponse);
     };
 }
 
